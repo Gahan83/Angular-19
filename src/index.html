@@ -6,6 +6,21 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Bootstrap Bundle with Popper -->
+  <script>
+    const tooltips=document.querySelectorAll('.tt')
+    tooltips.forEach(t=>{
+      new bootstrap.Tooltip(t)
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var popoverButton = document.getElementById("popoverButton");
+        new bootstrap.Popover(popoverButton, {
+            trigger: "hover", // Enables popover on hover
+            placement: "top"  // Position of the popover
+        });
+    });
+  </script>
 </head>
 <body>
   <app-root></app-root>

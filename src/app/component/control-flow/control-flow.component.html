@@ -1,0 +1,65 @@
+<h1 class="text-center">Control Flow</h1>
+
+<div class="row">
+  <div class="col-3">
+    @if (isShow==true)
+    {
+    <div class="bg-success p-3">
+      Div 1
+    </div>
+    }
+  </div>
+  <div class="col-3">
+    @if (isChecked==true)
+    {
+    <div class="bg-primary p-3">
+      Checked
+    </div>
+    }
+    @else
+    {
+    <div class="bg-danger p-3">
+      Unchecked
+    </div>
+    }
+  </div>
+  <div class="col-3">
+    @if (name=='mon')
+    {
+
+    <span>Monday</span>
+    }
+    @else if (name=='tue')
+    {
+    <span>Tueday</span>
+    }
+    @else if (name=='wed')
+    {
+    <span>Wednesday</span>
+    }
+    @else
+    {
+    <span>Other</span>
+    }
+  </div>
+</div>
+
+<div class="row pt-2">
+  <div class="col-3">
+    <button class="btn btn-success me-2" (click)="display(true)">Show</button>
+    <button class="btn btn-danger" (click)="display(false)">Hide</button>
+  </div>
+  <div class="col-3">
+    <input type="checkbox" [(ngModel)]="isChecked" />
+  </div>
+  <div class="col-3">
+    <input type="textbox" [(ngModel)]="name" placeholder="Day Name" maxlength="3" />
+  </div>
+  <div class="col-3">
+    <select name="" id="">
+      @for (item of cityList; track $index) {
+        <option>{{item}}</option>
+      }
+    </select>
+  </div>
+</div>

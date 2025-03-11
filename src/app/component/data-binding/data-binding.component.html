@@ -1,0 +1,45 @@
+<button class="btn btn-success" (click)="navigateTo()">Go to Ng Class</button>
+<div class="row">
+    <h1>
+        One way data binding
+    </h1>
+    <div class="col-6">
+        <p>Interpolation</p>
+        <p>FirstName: {{firstName}}</p>
+    </div>
+    <div class="col-6">
+        <p>Property Binding</p>
+        <input type="text" [value]="firstName">
+    </div>
+</div>
+<div class="row">
+    <div class="row">
+        <p>Event Binding</p>
+        <div class="col-3">
+            <button class="btn btn-success" (click)="showWelcomeMessage()">Show</button>
+        </div>
+    </div>
+
+    <div>
+        <select name="city" id="city" (change)="onCityChange()">
+            <option>Bangalore</option>
+            <option>Mangalore</option>
+            <option>Mumbai</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <h1>Two Way Data Binding</h1>
+    <div class="col-6">
+        <input type="text" [(ngModel)]="firstName">
+    </div>
+    <div class="col-6">
+        <select name="city" id="city" [(ngModel)]="city">
+            <option>Bangalore</option>
+            <option>Mangalore</option>
+            <option>Mumbai</option>
+        </select>
+        - {{city}}
+    </div>
+</div>

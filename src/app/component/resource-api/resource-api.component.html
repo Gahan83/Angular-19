@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-3">
+    {{userList.hasValue()}}
+  </div>
+  <div class="col-3">
+    <ul>
+      @for (user of userList.value(); track $index) {
+        <li>{{user.name}} - {{user.username}}</li>
+      }
+    </ul>
+  </div>
+  <div class="col-3">
+    {{userList.isLoading()}}
+  </div>
+
+  <div class="col-3">
+    <button class="btn btn-success" (click)="reload()">Reload</button>
+  </div>
+</div>
+
+<button type="button" class="btn btn-secondary">
+  <span class="tt" data-bs-placement="left" title="Tooltip on gahan">
+    Tooltip on top
+  </span>
+</button>
+
+<div class="container mt-5 text-center">
+  <button type="button" class="btn btn-primary" id="popoverButton"
+          title="Popover Title"
+          data-bs-content="This popover appears on hover!">
+      Hover me for Popover
+  </button>
+</div>
