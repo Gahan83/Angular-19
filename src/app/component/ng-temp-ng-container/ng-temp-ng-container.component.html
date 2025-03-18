@@ -1,3 +1,57 @@
-<p>
-  ng-temp-ng-container works!
-</p>
+<div class="row">
+  <div class="col-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="isLoader">
+          <!-- <ng-container *ngTemplateOutlet="templateLoader">
+          </ng-container> -->
+          <div [ngTemplateOutlet]="templateLoader">
+
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!isLoader">
+          @for (user of students; track $index) {
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.age }}</td>
+              <td>
+                <h6 *ngIf="user.isActive else deActive">Active</h6>
+                <!-- <h6 *ngIf="!user.isActive">De-Active</h6> -->
+              </td>
+            </tr>
+            }
+        </ng-container>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #deActive>
+  <div class="text-danger">
+    <span>De Active</span>
+  </div>
+</ng-template>
+
+<ng-template #templateLoader>
+  <tr>
+    <td colspan="4" class="text-align">
+      <div class="spinner-border text-muted"></div>
+      <div class="spinner-border text-primary"></div>
+      <div class="spinner-border text-success"></div>
+      <div class="spinner-border text-info"></div>
+      <div class="spinner-border text-warning"></div>
+      <div class="spinner-border text-danger"></div>
+      <div class="spinner-border text-secondary"></div>
+      <div class="spinner-border text-dark"></div>
+      <div class="spinner-border text-light"></div>
+    </td>
+  </tr>
+</ng-template>

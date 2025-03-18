@@ -1,15 +1,18 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,RouterLink],
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor() { 
+   
+  }
 
   router=inject(Router)
   onLogOff()
