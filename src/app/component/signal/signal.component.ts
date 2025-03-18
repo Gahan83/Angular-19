@@ -14,9 +14,10 @@ export class SignalComponent implements OnInit {
 
   constructor() {
     const value = this.firstName();
-    setTimeout(() => {  
-      this.firstName.set('Gagan');
+    this.firstName.set('Gagan');
       this.course = 'React JS';
+    setTimeout(() => {  
+      
     },5000);
   }
 

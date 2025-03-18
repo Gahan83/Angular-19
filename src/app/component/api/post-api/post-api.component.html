@@ -1,7 +1,24 @@
 <div class="container">
   <div class="row">
     <h1 class="text-center">Post API Intergration</h1>
-    <div class="col-6">
+    <div class="row">
+      <div class="col-12 text-center">
+        <app-tabs
+          [tabs]="['Car List', 'New Form List']"
+          (onTabClicked)="onTabChange($event)"
+        ></app-tabs>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-4">
+          <input type="text" #txtCity placeholder="Enter City">
+          <button class="btn btn-success" (click)="readCityValue()">Read Value</button>
+        </div>
+      </div>
+    </div>
+    @if (currentTabs=='Car List') {
+    <div class="col-12">
       <button class="btn btn-success" (click)="getBooks()">Load books</button>
       <div class="card">
         <div class="card-body">
@@ -17,10 +34,18 @@
             <tbody>
               @for (book of bookList; track $index) {
               <tr>
-                <td>{{book.title}}</td>
-                <td>{{book.publishDate}}</td>
-                <td><button class="btn btn-secondary" (click)="editBook(book)">Edit</button></td>
-                <td><button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button></td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publishDate }}</td>
+                <td>
+                  <button class="btn btn-secondary" (click)="editBook(book)">
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-danger" (click)="deleteBook(book.id)">
+                    Delete
+                  </button>
+                </td>
               </tr>
               }
             </tbody>
@@ -28,41 +53,64 @@
         </div>
       </div>
     </div>
-    <div class="col-6">
-
+    } @else{
+    <div class="col-12">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Create New Book</h5>
           <div class="mb-3">
             <label>Title</label>
-            <input type="text" [(ngModel)]="bookObj.title" class="form-control" id="exampleInputEmail1"
-              placeholder="Enter title">
+            <input
+              type="text"
+              [(ngModel)]="bookObj.title"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter title"
+            />
           </div>
           <div class="mb-3">
             <label>Description</label>
-            <input type="text" [(ngModel)]="bookObj.description" class="form-control" id="exampleInputEmail1"
-              placeholder="Enter description">
+            <input
+              type="text"
+              [(ngModel)]="bookObj.description"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter description"
+            />
           </div>
           <div class="mb-3">
             <label>Expert</label>
-            <input type="text" [(ngModel)]="bookObj.excerpt" class="form-control" id="exampleInputEmail1"
-              placeholder="Enter author">
+            <input
+              type="text"
+              [(ngModel)]="bookObj.excerpt"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter author"
+            />
           </div>
           <div class="mb-3">
             <label>Published Date</label>
-            <input type="text" [(ngModel)]="bookObj.publishDate" class="form-control" id="exampleInputEmail1"
-              placeholder="Enter date">
+            <input
+              type="text"
+              [(ngModel)]="bookObj.publishDate"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter date"
+            />
           </div>
           <button class="btn btn-secondary">Cancel</button>
           @if (bookObj.id==0) {
-          <button class="btn btn-primary m-2" (click)="postBooks()">Save</button>
-          }
-          @else
-          {
-          <button class="btn btn-primary m-2" (click)="updateBook(bookObj.id)">Update</button>
+          <button class="btn btn-primary m-2" (click)="postBooks()">
+            Save
+          </button>
+          } @else {
+          <button class="btn btn-primary m-2" (click)="updateBook(bookObj.id)">
+            Update
+          </button>
           }
         </div>
       </div>
     </div>
+    }
   </div>
 </div>

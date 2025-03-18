@@ -1,5 +1,6 @@
 export class Student {
     id?: number;
     name?: string;
-    age?: Number;
+    age?: number;
+    attendance?: number;
 }

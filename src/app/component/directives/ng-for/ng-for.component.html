@@ -1,3 +1,67 @@
+<div class="row p-3">
+  <div class="col-4">
+    <app-progress-bar [progessBarValue]="80"></app-progress-bar>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 text-center">
+    <app-tabs [tabs]="forTabs"></app-tabs>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>attendance/th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of students; track $index) {
+        <tr>
+          <td>{{user.name}}</td>
+          <td>{{user.age | na}}</td>
+          <td><app-progress-bar [progessBarValue]="user.attendance"></app-progress-bar></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col -3">
+   Uppercase -  {{courseName | uppercase}}
+  </div>
+  <div class="col-3">
+    Lowercase - {{courseName | lowercase}}
+  </div>
+  <div class="col-3">
+    JsonPipe - {{studentObj | json}}
+  </div>
+  <div class="col-3">
+   
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col -3">
+    Date -  {{currentDate | date:'dd-mm-yy'}}
+   </div>
+   <div class="col-3">
+     Time - {{currentDate | date: 'hh:mm:ss' }}
+   </div>
+   <div class="col-3">
+     Current Data & Time - {{currentDate}}
+   </div>
+   <div class="col-3">
+    Date Short - {{currentDate | date:'short'}}
+   </div>
+</div>
 <div class="row">
   <div class="col-3">
     <ul>
@@ -8,8 +72,10 @@
     <select>
       <option *ngFor="let student of students" [value]="student.id">
 
-        {{student.name}} - {{student.age}}
+        {{student.name }} - {{student.age | na}}
       </option>
     </select>
   </div>
 </div>
+
+

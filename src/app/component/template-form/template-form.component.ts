@@ -23,7 +23,6 @@ export class TemplateFormComponent implements OnInit {
 
   onSave()
   {
-    debugger;
     const formvalue=this.user;
   }
 

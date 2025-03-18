@@ -10,58 +10,93 @@ import { ReactiveFormComponent } from './component/reactive-form/reactive-form.c
 import { GetApiComponent } from './component/api/get-api/get-api.component';
 import { PostApiComponent } from './component/api/post-api/post-api.component';
 import { ResourceApiComponent } from './component/resource-api/resource-api.component';
+import { NgIfComponent } from './component/directives/ng-if/ng-if.component';
+import { NgStyleComponent } from './component/directives/ng-style/ng-style.component';
+import { NgForComponent } from './component/directives/ng-for/ng-for.component';
+import { LifeCycleComponent } from './component/life-cycle/life-cycle.component';
+import { LoginComponent } from './component/login/login.component';
+import { LayoutComponent } from './component/layout/layout.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
         redirectTo: () => {
-            return 'dataBinding';
+            return 'login';
         },
         //redirectTo:'dataBinding',
         pathMatch: 'full'
     },
     {
-        path: 'admin',
-        component: AdminComponent
+        path:'login',
+        component:LoginComponent
     },
     {
-        path: 'dataBinding',
-        component: DataBindingComponent
-    },
-    {
-        path: 'ng-class',
-        component: NgClassComponent
-    },
-    {
-        path: 'control-flow',
-        component: ControlFlowComponent
-    },
-    {
-        path: 'signal',
-        component: SignalComponent
-    },
-    {
-        path: 'linked-signal',
-        component: LinkedSignalComponent
-    },
-    {
-        path: 'template-form',
-        component: TemplateFormComponent
-    },
-    {
-        path: 'reactive-form',
-        component: ReactiveFormComponent
-    },
-    {
-        path: 'get-api',
-        component: GetApiComponent
-    },
-    {
-        path: 'post-api',
-        component: PostApiComponent
-    },
-    {
-        path: 'resource-api',
-        component: ResourceApiComponent
-    }
+        path:'',
+        component:LayoutComponent,
+        canActivate:[authGuard],
+        children:
+        [
+            {
+                path: 'admin',
+                component: AdminComponent
+            },
+            {
+                path: 'dataBinding',
+                component: DataBindingComponent
+            },
+            {
+                path: 'ng-class',
+                component: NgClassComponent
+            },
+            {
+                path: 'ng-style',
+                component: NgStyleComponent
+            },
+            {
+                path: 'control-flow',
+                component: ControlFlowComponent
+            },
+            {
+                path: 'ng-if',
+                component: NgIfComponent
+            },
+            {
+                path: 'ng-for',
+                component: NgForComponent
+            },
+            {
+                path: 'signal',
+                component: SignalComponent
+            },
+            {
+                path: 'linked-signal',
+                component: LinkedSignalComponent
+            },
+            {
+                path: 'template-form',
+                component: TemplateFormComponent
+            },
+            {
+                path: 'reactive-form',
+                component: ReactiveFormComponent
+            },
+            {
+                path: 'get-api',
+                component: GetApiComponent
+            },
+            {
+                path: 'post-api',
+                component: PostApiComponent
+            },
+            {
+                path: 'resource-api',
+                component: ResourceApiComponent
+            },
+            {
+                path: 'life-cycle',
+                component: LifeCycleComponent
+            }
+        ]
+    } 
 ];

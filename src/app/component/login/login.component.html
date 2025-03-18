@@ -1,0 +1,27 @@
+<form>
+  <div class="heading">
+      <p>USER LOGIN</p>
+      <p>Welcome to the website</p>
+  </div>
+  <div class="input-container">
+      <div class="p-icon">
+          <i class="ri-user-fill"></i>
+      </div>
+      <div class="user-inputs">
+          <input type="text" name="EmailId" [(ngModel)]="apiLoginObj.EmailId">
+          <input type="password" name="Password" [(ngModel)]="apiLoginObj.Password">
+      </div>
+      <button class="login" (click)="onSave()">LOGIN</button>
+  </div>
+  <!-- <div class="checkbox">
+      <input type="checkbox">
+      <p>I accept the terms & conditions</p>
+  </div>
+  <a href="#" class="forget">Forgot Password?</a>
+  <ul class="social">
+    <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+    <li><a href="#"><i class="ri-twitter-x-fill"></i></a></li>
+    <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+    <li><a href="#"><i class="ri-youtube-line"></i></a></li>
+  </ul> -->
+</form>

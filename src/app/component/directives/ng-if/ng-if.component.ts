@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProgressBarComponent } from '../../../reusable/progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-ng-if',
-  imports: [ CommonModule,FormsModule],
+  imports: [ CommonModule,FormsModule,ProgressBarComponent],
   templateUrl: './ng-if.component.html',
   styleUrls: ['./ng-if.component.css']
 })
@@ -12,7 +14,7 @@ export class NgIfComponent implements OnInit {
   display:boolean=true;
   Name:string="";
   EName:string="";
-  constructor() { }
+  constructor(private router: Router) { }
 
   hide(){
     this.display=!this.display;
@@ -21,6 +23,11 @@ export class NgIfComponent implements OnInit {
     this.display=true;
   }
 
+  public navigateTo()
+  {
+    this.router.navigate(['/ng-for']);
+  }
+  
   ngOnInit() {
   }
 

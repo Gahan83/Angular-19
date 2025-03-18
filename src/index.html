@@ -16,7 +16,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         var popoverButton = document.getElementById("popoverButton");
         new bootstrap.Popover(popoverButton, {
-            trigger: "hover", // Enables popover on hover
+            trigger: "hover focus", // Enables popover on hover
             placement: "top"  // Position of the popover
         });
     });

@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../service/api.service';
+import { TabsComponent } from "../../../reusable/tabs/tabs.component";
 
 @Component({
   selector: 'app-post-api',
-  imports: [FormsModule],
+  imports: [FormsModule, TabsComponent],
   templateUrl: './post-api.component.html',
   styleUrls: ['./post-api.component.css']
 })
-export class PostApiComponent implements OnInit {
-
+export class PostApiComponent implements OnInit,AfterViewInit {
+  currentTabs: string = 'Car List';
   bookList: any;
   bookObj: any = {
     "id": 0,
@@ -21,8 +22,15 @@ export class PostApiComponent implements OnInit {
   }
   http = inject(HttpClient); //Angular 16
 
-  constructor(private readonly apiService: ApiService) { }
+  @ViewChild('txtCity') cityTextBox:ElementRef | undefined;
+  @ViewChild(TabsComponent) tabsComponent: TabsComponent | undefined;
+  constructor(private readonly apiService: ApiService) { 
+  }
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit',performance.now());
+  }
   ngOnInit() {
+    this.getBooks();
   }
 
   public getBooks(): void {
@@ -71,5 +79,19 @@ export class PostApiComponent implements OnInit {
             this.getBooks();
         });
     }
+  }
+
+  public onTabChange(tab: string) {
+    this.currentTabs= tab;
+  }
+
+  public readCityValue()
+  {
+    const city = this.cityTextBox?.nativeElement.value;
+    if(this.cityTextBox)
+    {
+      this.cityTextBox.nativeElement.style.backgroundColor = 'red';
+    }
+    const val= this.tabsComponent?.currentTab;
   }
 }
