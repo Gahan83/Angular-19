@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
     this.http.post("https://projectapi.gerasim.in/api/UserApp/login",this.apiLoginObj)
     .subscribe((result: any) => {
       localStorage.setItem("angular19User",result.data.userId);
+      localStorage.setItem("angular19Token",result.data.token);
+      localStorage.setItem("angular19Data", JSON.stringify(result.data));
       this.router.navigateByUrl("admin")
     },
     error=>{
